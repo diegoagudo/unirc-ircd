@@ -126,7 +126,7 @@ do_links(struct Client *source_p, int parc, char **parv)
                        "irc.unirc.net", "irc.unirc.net", 0, "UnIRC Network");
                 sendto_one(source_p, form_str(RPL_LINKS),
                        me_name, nick,
-                       target_p->name, "irc.unirc.bet", target_p->hopcount+1, p);
+                       target_p->name, "irc.unirc.net", target_p->hopcount+1, p);
             } else {
                 sendto_one(source_p, form_str(RPL_LINKS),
                        me_name, nick,
