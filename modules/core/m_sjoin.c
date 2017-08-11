@@ -197,10 +197,6 @@ ms_sjoin(struct Client *client_p, struct Client *source_p, int parc, char *parv[
 			xyi = atoi(xp);
 			xp--;
 			*xp = ':';
-
-            sendto_realops_flags(UMODE_ALL, L_ALL,
-                                 "%i - %i",
-                                 xxi, xyi);
             
 			mode.msgs = xxi;
 			mode.per = xyi;
