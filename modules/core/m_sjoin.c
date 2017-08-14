@@ -144,6 +144,8 @@ ms_sjoin(struct Client *client_p, struct Client *source_p, int parc, char *parv[
 
 	mode.mode = 0;
 	mode.limit = 0;
+    mode.msgs = 0;
+    mode.per = 0;
 	mode.key[0] = '\0';
 	mode.forward[0] = '\0';
 
@@ -314,6 +316,10 @@ ms_sjoin(struct Client *client_p, struct Client *source_p, int parc, char *parv[
 			strcpy(mode.key, oldmode->key);
         if(strcmp(mode.forward, oldmode->forward) < 0)
             strcpy(mode.forward, oldmode->forward);
+		if(oldmode->msgs > mode.msgs)
+			mode.msgs = oldmode->msgs;
+		if(oldmode->per > mode.per)
+			mode.per = oldmode->per;
 
     }
 	set_final_mode(&mode, oldmode);

@@ -394,13 +394,12 @@ channel_modes(struct Channel *chptr, struct Client *client_p, char *mbuf, char *
 			ircsprintf(pbuf, "%s ", chptr->mode.key);
 	}
 
-	if (chptr->mode.msgs)
+	if (chptr->mode.msgs && chptr->mode.per)
 	{
 		*mbuf++ = 'f';
 		if (IsMember(client_p, chptr) || IsServer(client_p) || IsServices(client_p))
 		{
-			ircsprintf(tmppbuf, "%i:%i ", chptr->mode.msgs, chptr->mode.per);
-			strcat(pbuf, tmppbuf);
+			ircsprintf(pbuf, "%d:%d ", chptr->mode.msgs, chptr->mode.per);
 		}
 	}
 

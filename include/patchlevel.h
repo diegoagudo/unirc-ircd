@@ -23,5 +23,5 @@
  */
 
 #ifndef PATCHLEVEL
-#define PATCHLEVEL   "plexus-3.0+unirc-1.2.1"
+#define PATCHLEVEL   "plexus-3.0+unirc-1.2.2"
 #endif
