@@ -604,7 +604,7 @@ set_final_mode(struct Mode *mode, struct Mode *oldmode)
 		*mbuf++ = 'l';
 	}
 
-	if((oldmode->msgs != 0 && oldmode->per !=0 ) || (mode->msgs == 0 && mode->per == 0))
+	if((oldmode->msgs != 0 && oldmode->per !=0 ) && (mode->msgs == 0 && mode->per == 0))
 	{
 		if(what != -1)
 		{
