@@ -168,7 +168,7 @@ static void mr_cgiirc(struct Client *client_p, struct Client *source_p, int parc
 	strlcpy(source_p->realhost, parv[3], sizeof(source_p->realhost)); 
 	strlcpy(source_p->sockhost, parv[4], sizeof(source_p->sockhost)); 
 	//SetWebIrc(source_p);
-	//sendto_one(source_p, ":%s NOTICE AUTH :*** Substituindo o host do WebIRC...", me.name);
+	sendto_one(source_p, ":%s NOTICE AUTH :*** WEBIRC Host spoofing active", me.name);
 }
 
 
