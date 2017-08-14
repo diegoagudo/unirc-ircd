@@ -1,5 +1,9 @@
-diego aka xoom
-        2017/08/07 BRT
+diego aka xoom 
+        2017/08/13 BRT (1.2.2)
+  - Fixed CMODE +f I hope
+  
+diego aka xoom 
+        2017/08/07 BRT (v1.2.1)
   - Implemented CMODE +f (Flood control)
   - Implemented CMODE +F (Forward, allow set partners chans)
  
