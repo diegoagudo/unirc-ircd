@@ -50,8 +50,8 @@ struct Mode
 	unsigned int limit;	/*!< +l userlimit */
 	char key[KEYLEN];	/*!< +k key */
 	char forward[128];
-	int   msgs; /* x */
-	int   per;  /* y */
+	unsigned int msgs; /* x */
+	unsigned int per;  /* y */
 };
 
 /*! \brief Channel structure */

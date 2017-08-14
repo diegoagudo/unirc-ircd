@@ -197,11 +197,13 @@ ms_sjoin(struct Client *client_p, struct Client *source_p, int parc, char *parv[
 			xyi = atoi(xp);
 			xp--;
 			*xp = ':';
-            
-			mode.msgs = xxi;
-			mode.per = xyi;
-            mode.mode |= MODE_FLOODLIMIT;
 
+            if ( (xxi < 99) && (xyi < 99) && (xxi >= 1) && (xyi > 0)) {
+                mode.msgs = xxi;
+                mode.per = xyi;
+            }
+            
+            //mode.mode |= MODE_FLOODLIMIT;
 
             if (parc < 5+args) 
                 return;
@@ -801,6 +803,10 @@ set_final_mode(struct Mode *mode, struct Mode *oldmode)
 	if(oldmode->limit != 0 && mode->limit == 0)
 		*mbuf++ = 'l';
 
+
+    if((oldmode->msgs != 0 && mode->msgs == 0) || (oldmode->per != 0 && mode->per == 0))
+        *mbuf++ = 'f';
+    
 	if(oldmode->key[0] && !mode->key[0])
 	{
 		*mbuf++ = 'k';
@@ -836,6 +842,16 @@ set_final_mode(struct Mode *mode, struct Mode *oldmode)
 		pargs++;
 	}
 
+    if((mode->msgs != 0 && oldmode->msgs != mode->msgs) && (mode->per != 0 && oldmode->per != mode->per))
+    {
+        if ((mode->msgs < 99) && (mode->per < 99) && (mode->msgs >= 1) && (mode->per > 0)) {
+            *mbuf++ = 'f';
+            len = ircsprintf(pbuf, "%d:%d ", mode->msgs, mode->per);
+            pbuf += len;
+            pargs++;
+        }
+    }
+    
 	if(mode->key[0] && strcmp(oldmode->key, mode->key))
 	{
 		*mbuf++ = 'k';

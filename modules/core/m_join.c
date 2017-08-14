@@ -600,7 +600,7 @@ set_final_mode(struct Mode *mode, struct Mode *oldmode)
 		*mbuf++ = 'l';
 	}
 
-	if((oldmode->msgs != 0 && oldmode->per !=0 ) && (mode->msgs == 0 && mode->per == 0))
+	if((oldmode->msgs != 0 && oldmode->per !=0 ) || (mode->msgs == 0 && mode->per == 0))
 	{
 		if(what != -1)
 		{
@@ -646,17 +646,18 @@ set_final_mode(struct Mode *mode, struct Mode *oldmode)
 		pbuf += len;
 	}
 
-	if((mode->msgs != 0 && mode->per !=0 ) && (mode->msgs != oldmode->msgs && mode->per != oldmode->per))
-	{
-		if(what != -1)
-		{
-			*mbuf++ = '-';
-			what = -1;
-		}
-		*mbuf++ = 'f';
-		len = ircsprintf(pbuf, "%d:%d ", mode->msgs, mode->per);
-		pbuf += len;
-	}
+    if((mode->msgs != 0 && mode->per !=0 ) && (mode->msgs != oldmode->msgs && mode->per != oldmode->per))
+    {
+        if ((mode->msgs < 99) && (mode->per < 99) && (mode->msgs >= 1) && (mode->per > 0)) {
+            if (what != 1) {
+                *mbuf++ = '+';
+                what = 1;
+            }
+            *mbuf++ = 'f';
+            len = ircsprintf(pbuf, "%d:%d ", mode->msgs, mode->per);
+            pbuf += len;
+        }
+    }
 	
 	if(mode->key[0] && strcmp(oldmode->key, mode->key))
 	{

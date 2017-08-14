@@ -1014,8 +1014,7 @@ can_send(struct Channel *chptr, struct Client *source_p, struct Membership *ms, 
 
     if(text)
     {
-        if ((chptr->mode.mode & MODE_FLOODLIMIT) && ms
-            && check_for_chan_flood(source_p, chptr, ms))
+        if (ms && check_for_chan_flood(source_p, chptr, ms))
             return (-6);
 
         if (chptr->mode.mode & MODE_NOSPAM) 

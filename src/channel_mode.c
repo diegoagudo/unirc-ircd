@@ -1653,7 +1653,7 @@ chm_floodtime(struct Client *client_p, struct Client *source_p,
 		mode_changes[mode_count].id = NULL;
 		mode_changes[mode_count++].arg = lstr;
 
-        chptr->mode.mode |= MODE_FLOODLIMIT;
+        //chptr->mode.mode |= MODE_FLOODLIMIT;
 		chptr->mode.msgs = xxi;
 		chptr->mode.per = xyi;
 	}
@@ -1662,7 +1662,7 @@ chm_floodtime(struct Client *client_p, struct Client *source_p,
 		if(!chptr->mode.msgs)
 			return;
 
-        chptr->mode.mode &= ~MODE_FLOODLIMIT;
+        //chptr->mode.mode &= ~MODE_FLOODLIMIT;
 		chptr->mode.msgs = 0;
 		chptr->mode.per = 0;
 
@@ -1884,7 +1884,7 @@ static struct ChannelMode ModeTable[255] =
   {chm_simple, (void *) MODE_NOCTRL},             /* c */
   {chm_simple, (void *) MODE_NOFLOOD},            /* d */
   {chm_except, NULL},                             /* e */
-  {chm_floodtime, NULL},                             /* f */
+  {chm_floodtime, NULL},                          /* f */
   {chm_nosuch, NULL},                             /* g */
 #ifdef HALFOPS
   {chm_hop, NULL},                                /* h */

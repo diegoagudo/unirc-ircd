@@ -68,7 +68,7 @@
 #define MODE_CHANREG    0x02000
 #define MODE_STRIPCOLOR 0x04000
 #define MODE_NOFLOOD    0x08000
-#define MODE_FLOODLIMIT 0x10000  /* limit messages per time */
+//#define MODE_FLOODLIMIT 0x10000  /* limit messages per time */
 #define MODE_SSLONLY    0x20000
 #define MODE_FORWARD    0x40000
 
